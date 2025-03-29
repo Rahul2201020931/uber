@@ -9,4 +9,4 @@ connectToDb();
 app.get('/',(req,res)=>{
     res.send('hello');
 });
-module.exports=app;
+module.exports=app; 
