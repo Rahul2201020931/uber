@@ -1,17 +1,17 @@
 const mongoose = require('mongoose');
 
-function connectToDb() {
+const uri = "mongodb+srv://Rahul:qwertyuiop@uber.pkyrqzu.mongodb.net/?retryWrites=true&w=majority&appName=uber";
 
-    mongoose.connect(process.env.DB_CONNECT, { 
-        useNewUrlParser: true, 
-        useUnifiedTopology: true 
-    })
-    .then(() => {
-        console.log("Connected check  to MongoDB successfully!");
-    })
-    .catch((err) => {
-        console.error("Error connecting to MongoDB:", err);
+async function connectToDb() {
+  try {
+    await mongoose.connect(uri, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
     });
+    console.log("Connected to MongoDB Atlas successfully!");
+  } catch (err) {
+    console.error("Error connecting to MongoDB:", err);
+  }
 }
 
 module.exports = connectToDb;
